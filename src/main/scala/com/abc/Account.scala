@@ -1,6 +1,7 @@
 package com.abc
 
 import scala.collection.mutable.ListBuffer
+import java.util.Calendar
 
 object Account {
   final val CHECKING: Int = 0
@@ -31,11 +32,20 @@ class Account(val accountType: Int, var transactions: ListBuffer[Transaction] = 
         if (amount <= 1000) amount * 0.001
         else 1 + (amount - 1000) * 0.002
       case Account.MAXI_SAVINGS =>
+        for(transaction <- transactions if((transaction.transactionDate - DateProvider.getInstance)>10)
+        {
+           
+        }
+        
         if (amount <= 1000) return amount * 0.02
         if (amount <= 2000) return 20 + (amount - 1000) * 0.05
         70 + (amount - 2000) * 0.1
-      case _ =>
+              case _ =>
         amount * 0.001
+        
+        
+         
+        
     }
   }
 
